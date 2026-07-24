@@ -329,6 +329,17 @@
   .gov-item h4 { margin: 0 0 .4rem; font-size: var(--step-1); }
   .gov-item p { margin: 0; color: var(--ink-soft); font-size: var(--step-sm); }
 
+  /* ---- learn / featured book ---- */
+  .bookcard { display: flex; gap: 1.6rem; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow); padding: 1.6rem 1.7rem; }
+  @media (max-width: 640px) { .bookcard { flex-direction: column; align-items: flex-start; } }
+  .book-cover { flex: none; width: 92px; height: 124px; border-radius: 3px 7px 7px 3px; background: linear-gradient(140deg, var(--accent), var(--accent-ink)); box-shadow: var(--shadow); position: relative; border-left: 5px solid rgba(0,0,0,.22); }
+  .book-cover::after { content: ""; position: absolute; top: 14px; right: 14px; width: 13px; height: 13px; border-radius: 50%; background: var(--signal); box-shadow: 0 0 0 3px rgba(255,255,255,.22); }
+  .book-body { display: flex; flex-direction: column; gap: .35rem; }
+  .book-title { font-size: var(--step-1); font-weight: 650; margin: 0; color: var(--ink); letter-spacing: -.01em; }
+  .book-by { margin: 0; font-family: var(--font-mono); font-size: .82rem; color: var(--accent-ink); }
+  .book-desc { margin: .25rem 0 .3rem; color: var(--ink-soft); max-width: 60ch; }
+  .book-links { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: .3rem; }
+
   /* ---- footer ---- */
   .site-foot { border-top: 1px solid var(--line); padding-block: 2.4rem 3rem; }
   .foot-inner { display: flex; flex-wrap: wrap; gap: 1.4rem 2.4rem; justify-content: space-between; }
@@ -490,6 +501,26 @@
       <p>A package is used. An ecosystem <strong>grows on its own contributions</strong>. PyOD works the second way: the community adds a new detector as a pull request, that detector reaches everyone on the next release, more usage brings more contributors, and the API becomes the interface newcomers learn first.</p>
       <p>Aggregation is the mechanism. As model hubs collect models behind one interface, PyOD collects <strong>anomaly detectors behind one API</strong>. Sixty-plus algorithms now sit under the same three-line calling convention, which is why downstream libraries copy it rather than invent their own.</p>
       <p>The clearest proof is reach beyond one lab and one data type. <strong>The PyOD-style API now carries graph outliers (PyGOD), time-series detection (TODS), and a shared benchmark (ADBench)</strong>, and the surrounding research has published at NeurIPS, JMLR, MLSys, AAAI, EMNLP, and ACL. That is a standard taking hold, and it is what a reviewer means by a real, distributed ecosystem.</p>
+    </div>
+  </section>
+
+  <section class="block wrap" id="learn">
+    <div class="sec-head">
+      <p class="eyebrow">Learn PyOD</p>
+      <h2>The practitioner's companion</h2>
+      <p class="sec-sub">A hands-on book teaches anomaly detection through PyOD, from classic detectors to modern models.</p>
+    </div>
+    <div class="bookcard">
+      <div class="book-cover" aria-hidden="true"></div>
+      <div class="book-body">
+        <p class="book-title">Handbook of Anomaly Detection: With Python Outlier Detection</p>
+        <p class="book-by">Chris Kuo (Dr. Dataman), Columbia University</p>
+        <p class="book-desc">Ten-plus PyOD detectors, from kNN, LOF, and HBOS to XGBOD and deep models, each with code and worked examples. The most direct path for practitioners into the library.</p>
+        <div class="book-links">
+          <a class="btn primary" href="https://www.amazon.com/Handbook-Anomaly-Detection-modernize-detection/dp/B0BRLNHC65">Get the book</a>
+          <a class="btn ghost" href="https://medium.com/dataman-in-ai/handbook-of-anomaly-detection-with-python-outlier-detection-1-introduction-c8f30f71961c">Free chapter series &#8599;</a>
+        </div>
+      </div>
     </div>
   </section>
 
