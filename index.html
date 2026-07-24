@@ -277,7 +277,20 @@
   .card a.card-link { margin-top: .5rem; font-family: var(--font-mono); font-size: .82rem; color: var(--accent-ink); text-decoration: none; font-weight: 600; }
   .card a.card-link:hover { text-decoration: underline; }
 
-  /* ---- constellation (the anomaly-detection family) ---- */
+  /* ---- ecosystem network graph ---- */
+  .graph { margin: 0; position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow); overflow: hidden; }
+  #ecosystem { display: block; width: 100%; height: clamp(380px, 58vh, 560px); cursor: grab; touch-action: none; }
+  #ecosystem:active { cursor: grabbing; }
+  .graph figcaption { position: absolute; left: 0; right: 0; bottom: 0; margin: 0; padding: .7rem .95rem; font-family: var(--font-mono); font-size: .74rem; color: var(--muted); background: linear-gradient(to top, var(--surface) 35%, transparent); pointer-events: none; }
+  .graph-legend { position: absolute; top: .8rem; left: .95rem; display: flex; flex-wrap: wrap; gap: .3rem .95rem; font-family: var(--font-mono); font-size: .72rem; color: var(--ink-soft); pointer-events: none; }
+  .graph-legend span { display: inline-flex; align-items: center; gap: .35rem; }
+  .graph-legend i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+  .graph-legend .lg-hub { background: var(--accent); }
+  .graph-legend .lg-fam { background: var(--signal); }
+  .graph-legend .lg-int { background: #2f8f86; }
+  .graph-legend .lg-adopt { background: #c08a1e; }
+
+  /* ---- constellation arm-grid (legacy, unused) ---- */
   .arm-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
   @media (max-width: 820px) { .arm-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 540px) { .arm-grid { grid-template-columns: 1fr; } }
@@ -426,52 +439,20 @@
 
   <section class="block wrap" id="map">
     <div class="sec-head">
-      <p class="eyebrow">One hub, many arms</p>
-      <h2>The anomaly-detection constellation</h2>
-      <p class="sec-sub">PyOD sits at the center of a family of libraries, benchmarks, and systems that share its API and its data. The surrounding research has published at NeurIPS, JMLR, MLSys, AAAI, EMNLP, and ACL.</p>
+      <p class="eyebrow">One hub, many projects</p>
+      <h2>The ecosystem, connected</h2>
+      <p class="sec-sub">A real ecosystem is layered. PyOD sits at the core; around it orbit the family that shares its API, the tools that embed it in production, and the institutions, books, and courses that build on it. Hover any node to trace its ties.</p>
     </div>
-    <div class="arm-grid">
-      <div class="arm">
-        <h4 class="arm-label">Hub library</h4>
-        <ul>
-          <li><b>PyOD</b><em>9,930&#9733;</em><span class="d">60+ detectors, five data types, orchestration core</span></li>
-        </ul>
+    <figure class="graph">
+      <canvas id="ecosystem" aria-label="Layered orbital map of the PyOD ecosystem: PyOD at the core, then the family that shares its API, the tools that embed it, and the institutions, books, and courses that build on it"></canvas>
+      <div class="graph-legend" aria-hidden="true">
+        <span><i class="lg-hub"></i>PyOD</span>
+        <span><i class="lg-fam"></i>Family</span>
+        <span><i class="lg-int"></i>Integrations</span>
+        <span><i class="lg-adopt"></i>Adoption &amp; education</span>
       </div>
-      <div class="arm">
-        <h4 class="arm-label">Knowledge base</h4>
-        <ul>
-          <li><b>Anomaly-Detection-Resources</b><em>9,350&#9733;</em><span class="d">papers, datasets, tutorials, toolboxes</span></li>
-        </ul>
-      </div>
-      <div class="arm">
-        <h4 class="arm-label">Benchmarks</h4>
-        <ul>
-          <li><b>ADBench</b><em>NeurIPS</em><span class="d">large-scale tabular evaluation</span></li>
-          <li><b>NLP-ADBench</b><em>EMNLP</em><span class="d">anomalies in text</span></li>
-          <li><b>AD-LLM</b><em>ACL</em><span class="d">LLMs for detection</span></li>
-        </ul>
-      </div>
-      <div class="arm">
-        <h4 class="arm-label">Platform</h4>
-        <ul>
-          <li><b>AD-AGENT</b><span class="d">LLM multi-agent detection workflows</span></li>
-        </ul>
-      </div>
-      <div class="arm">
-        <h4 class="arm-label">Systems &amp; acceleration</h4>
-        <ul>
-          <li><b>SUOD</b><em>MLSys</em><span class="d">large-scale acceleration</span></li>
-          <li><b>combo</b><em>AAAI</em><span class="d">model &amp; score combination</span></li>
-        </ul>
-      </div>
-      <div class="arm">
-        <h4 class="arm-label">Sibling libraries</h4>
-        <ul>
-          <li><b>PyGOD</b><em>JMLR</em><span class="d">graph outliers, PyOD-style API</span></li>
-          <li><b>TODS</b><span class="d">time-series detection, AutoML</span></li>
-        </ul>
-      </div>
-    </div>
+      <figcaption id="graphHint">Hover a node to trace its ties. The rings are ecosystem layers.</figcaption>
+    </figure>
   </section>
 
   <section class="block wrap adoption" id="adoption">
@@ -489,6 +470,13 @@
       <span class="u"><b>Saudi SDAIA</b><small>PyOD in the national deepfake-detection guidelines.</small></span>
       <span class="u"><b>Nature journals</b><small>PyOD and ADBench in Scientific Reports and Communications methods sections.</small></span>
       <span class="u"><b>Industry patents</b><small>Granted patents build on PyOD detectors such as COPOD and the sibling TODS.</small></span>
+    </div>
+    <p class="eyebrow" style="margin: 2rem 0 1rem;">And built into the tools teams already run</p>
+    <div class="users">
+      <span class="u"><b>Apache Beam</b><small>A first-class PyOD detector handler ships in Beam's ML pipelines (Apache Software Foundation; Beam underlies Google Cloud Dataflow).</small></span>
+      <span class="u"><b>PostHog</b><small>The production alerting subsystem of this 34k-star analytics platform wraps eight PyOD algorithms.</small></span>
+      <span class="u"><b>MLflow</b><small>A documented PyOD community model flavor logs and serves detectors through MLflow.</small></span>
+      <span class="u"><b>Databricks</b><small>Kakapo pairs PyOD with MLflow and Hyperopt for scalable detector search.</small></span>
     </div>
     <p class="note">Anomaly detection guards the input to decisions: fraud screens, telemetry health, intrusion alerts. When a defensive detector is poisoned or silently degraded, the systems downstream stop seeing what they were built to catch. That blast radius is the case for hardening the ecosystem, not only the library.</p>
   </section>
@@ -712,6 +700,170 @@
 
   if (document.readyState === "complete") init();
   else window.addEventListener("load", init);
+})();
+
+/* ---- ecosystem network graph (layered orbital map) ---- */
+(function () {
+  "use strict";
+  var canvas = document.getElementById("ecosystem");
+  if (!canvas) return;
+  var ctx = canvas.getContext("2d");
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var TEAL = "#2f8f86", GOLD = "#c08a1e";
+
+  var HUB = { label: "PyOD", detail: "Hub library  ·  60+ detectors  ·  50M+ installs", w: 1.4, hub: true };
+  var LAYERS = [
+    { name: "Family", speed: 0.055, nodes: [
+      { label: "AD-Resources", detail: "Knowledge base  ·  9.4k stars", w: 1 },
+      { label: "PyGOD", detail: "Graph outliers  ·  JMLR", w: 0.92 },
+      { label: "TODS", detail: "Time-series AutoML", w: 0.92 },
+      { label: "ADBench", detail: "Benchmark  ·  NeurIPS", w: 0.86 },
+      { label: "SUOD", detail: "Acceleration  ·  MLSys", w: 0.72 },
+      { label: "combo", detail: "Model combination  ·  AAAI", w: 0.72 },
+      { label: "AD-AGENT", detail: "LLM detection platform", w: 0.66 },
+      { label: "NLP-ADBench", detail: "Text anomalies  ·  EMNLP", w: 0.6 },
+      { label: "AD-LLM", detail: "LLMs for detection  ·  ACL", w: 0.6 }
+    ]},
+    { name: "Integrations", speed: 0.036, nodes: [
+      { label: "Apache Beam", detail: "PyOD handler in Beam ML  ·  8.5k stars", w: 1 },
+      { label: "PostHog", detail: "8 PyOD algorithms  ·  34k stars", w: 1 },
+      { label: "MLflow", detail: "PyOD model flavor  ·  25.8k stars", w: 0.92 },
+      { label: "Databricks", detail: "Kakapo: PyOD + MLflow", w: 0.85 }
+    ]},
+    { name: "Adoption & education", speed: 0.022, nodes: [
+      { label: "DoD CDAO", detail: "Responsible AI Toolkit", w: 0.84 },
+      { label: "ESA OPS-SAT", detail: "Spacecraft telemetry  ·  Nature", w: 0.84 },
+      { label: "OpenAI", detail: "Careers listing names PyOD", w: 0.8 },
+      { label: "Oracle FCCM", detail: "Bundles PyOD", w: 0.76 },
+      { label: "Nature", detail: "Scientific Reports / Communications", w: 0.76 },
+      { label: "Outlier Detection in Python", detail: "Book  ·  Manning", w: 0.72 },
+      { label: "Courses", detail: "DataCamp  ·  Udemy  ·  universities", w: 0.68 },
+      { label: "5,500 dependents", detail: "public repos build on PyOD", w: 0.82 }
+    ]}
+  ];
+
+  var nodes = [HUB];
+  LAYERS.forEach(function (L, li) {
+    L.nodes.forEach(function (n, i) { n.li = li; n.a0 = (i / L.nodes.length) * Math.PI * 2 + li * 0.5; nodes.push(n); });
+  });
+
+  function cssVar(k) { return getComputedStyle(document.documentElement).getPropertyValue(k).trim(); }
+  function lighten(hex) { var m = /^#?([0-9a-f]{6})$/i.exec(hex); if (!m) return hex; var n = parseInt(m[1], 16), r = (n >> 16) & 255, g = (n >> 8) & 255, b = n & 255; r = Math.round(r + (255 - r) * 0.5); g = Math.round(g + (255 - g) * 0.5); b = Math.round(b + (255 - b) * 0.5); return "rgb(" + r + "," + g + "," + b + ")"; }
+  function nodeColor(n) { if (n.hub) return cssVar("--accent") || "#990000"; return [cssVar("--signal") || "#2b5597", TEAL, GOLD][n.li]; }
+  function radius(n) { return n.hub ? 21 : 5 + n.w * 7; }
+  function nowMs() { return (window.performance && performance.now) ? performance.now() : 0; }
+
+  var W = 0, H = 0, dpr = 1, cx = 0, cy = 0, hover = null, rot = [0, 0, 0], last = nowMs();
+
+  function resize() {
+    dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+    var r = canvas.getBoundingClientRect(); W = r.width; H = r.height;
+    canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    cx = W / 2; cy = H / 2;
+    var maxRx = W * 0.43, maxRy = H * 0.4, frac = [0.4, 0.68, 1.0];
+    LAYERS.forEach(function (L, li) { L.rx = maxRx * frac[li]; L.ry = maxRy * frac[li]; });
+  }
+  function place() {
+    HUB.x = cx; HUB.y = cy;
+    LAYERS.forEach(function (L, li) { L.nodes.forEach(function (n) { var a = n.a0 + rot[li]; n.x = cx + L.rx * Math.cos(a); n.y = cy + L.ry * Math.sin(a); }); });
+  }
+  function edgeHot(n) { return hover && (hover.hub || hover === n); }
+  function rr(x, y, w, h, r) { ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath(); }
+  function shorten(s) { return s.length > 22 ? s.slice(0, 20) + "…" : s; }
+
+  function draw() {
+    var tm = nowMs() / 1000;
+    var accent = cssVar("--accent") || "#990000", line = cssVar("--line") || "#ecdfda";
+    var ink = cssVar("--ink") || "#2a1c1c", muted = cssVar("--muted") || "#8a7875", surface = cssVar("--surface") || "#fff";
+    ctx.clearRect(0, 0, W, H);
+
+    if (!reduce) {
+      var mR = Math.min(W, H) * 0.5;
+      for (var ri = 0; ri < 3; ri++) { var ph = ((tm * 0.14) + ri / 3) % 1; ctx.beginPath(); ctx.arc(cx, cy, 16 + ph * mR, 0, Math.PI * 2); ctx.strokeStyle = accent; ctx.globalAlpha = 0.07 * (1 - ph); ctx.lineWidth = 1; ctx.stroke(); }
+      ctx.globalAlpha = 1;
+    }
+
+    LAYERS.forEach(function (L) {
+      ctx.beginPath(); ctx.ellipse(cx, cy, L.rx, L.ry, 0, 0, Math.PI * 2);
+      ctx.strokeStyle = line; ctx.globalAlpha = 0.6; ctx.lineWidth = 1; ctx.setLineDash([2, 5]); ctx.stroke(); ctx.setLineDash([]);
+      ctx.globalAlpha = 0.75; ctx.fillStyle = muted; ctx.font = "600 10px ui-monospace, Menlo, monospace"; ctx.textAlign = "center"; ctx.textBaseline = "bottom";
+      ctx.fillText(L.name.toUpperCase(), cx, cy - L.ry - 4);
+    });
+    ctx.globalAlpha = 1;
+
+    nodes.forEach(function (n) {
+      if (n.hub) return;
+      var hot = edgeHot(n);
+      var g = ctx.createLinearGradient(cx, cy, n.x, n.y); g.addColorStop(0, accent); g.addColorStop(1, nodeColor(n));
+      ctx.strokeStyle = hot ? accent : g; ctx.globalAlpha = hover ? (hot ? 0.8 : 0.05) : 0.13; ctx.lineWidth = hot ? 2 : 1;
+      ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(n.x, n.y); ctx.stroke();
+    });
+    ctx.globalAlpha = 1;
+
+    if (!reduce) {
+      nodes.forEach(function (n) {
+        if (n.hub || n.li > 1) return;
+        var t = ((tm * 0.28) + n.a0) % 1, hot = edgeHot(n);
+        var px = cx + (n.x - cx) * t, py = cy + (n.y - cy) * t;
+        ctx.beginPath(); ctx.arc(px, py, hot ? 2.4 : 1.6, 0, Math.PI * 2); ctx.fillStyle = nodeColor(n); ctx.globalAlpha = hover ? (hot ? 0.9 : 0.08) : 0.55; ctx.fill();
+      });
+      ctx.globalAlpha = 1;
+    }
+
+    if (!reduce) {
+      var hr = radius(HUB);
+      for (var pi = 0; pi < 2; pi++) { var pph = ((tm * 0.5) + pi / 2) % 1; ctx.beginPath(); ctx.arc(cx, cy, hr + 2 + pph * 18, 0, Math.PI * 2); ctx.strokeStyle = accent; ctx.globalAlpha = 0.32 * (1 - pph); ctx.lineWidth = 2; ctx.stroke(); }
+      ctx.globalAlpha = 1;
+    }
+
+    nodes.forEach(function (n) {
+      var r = radius(n), base = nodeColor(n);
+      var isHot = hover && (hover.hub || hover === n || n.hub);
+      var dim = hover && !isHot;
+      ctx.globalAlpha = dim ? 0.25 : 1;
+      ctx.save();
+      ctx.shadowColor = base; ctx.shadowBlur = (n === hover ? 22 : (n.hub ? 16 : 7));
+      var rg = ctx.createRadialGradient(n.x - r * 0.35, n.y - r * 0.4, r * 0.1, n.x, n.y, r);
+      rg.addColorStop(0, lighten(base)); rg.addColorStop(1, base);
+      ctx.fillStyle = rg; ctx.beginPath(); ctx.arc(n.x, n.y, r, 0, Math.PI * 2); ctx.fill();
+      ctx.restore();
+      if (n === hover) { ctx.lineWidth = 2; ctx.strokeStyle = surface; ctx.beginPath(); ctx.arc(n.x, n.y, r + 2.5, 0, Math.PI * 2); ctx.stroke(); }
+      if (n.hub || !dim) {
+        ctx.globalAlpha = 1; ctx.fillStyle = ink;
+        ctx.font = (n.hub ? "700 13" : "600 10.5") + "px ui-monospace, Menlo, monospace";
+        ctx.textAlign = "center"; ctx.textBaseline = "top";
+        ctx.save(); ctx.shadowColor = surface; ctx.shadowBlur = 5; ctx.fillText(shorten(n.label), n.x, n.y + r + 3); ctx.restore();
+      }
+    });
+    ctx.globalAlpha = 1;
+
+    if (hover) {
+      var pad = 9, t1 = hover.label, t2 = hover.detail;
+      ctx.font = "600 12px ui-monospace, Menlo, monospace"; var w1 = ctx.measureText(t1).width;
+      ctx.font = "400 11px ui-monospace, Menlo, monospace"; var w2 = ctx.measureText(t2).width;
+      var bw = Math.max(w1, w2) + pad * 2, bh = 42;
+      var bx = Math.min(W - bw - 6, Math.max(6, hover.x + 14)), by = Math.max(6, hover.y - bh - 12);
+      ctx.fillStyle = "rgba(26,18,18,0.96)"; ctx.globalAlpha = 1; rr(bx, by, bw, bh, 8); ctx.fill();
+      ctx.textAlign = "left"; ctx.textBaseline = "top";
+      ctx.fillStyle = "#f4ece8"; ctx.font = "600 12px ui-monospace, Menlo, monospace"; ctx.fillText(t1, bx + pad, by + 8);
+      ctx.fillStyle = "#e6ad45"; ctx.font = "400 11px ui-monospace, Menlo, monospace"; ctx.fillText(t2, bx + pad, by + 23);
+    }
+  }
+
+  function nodeAt(mx, my) { for (var i = nodes.length - 1; i >= 0; i--) { var n = nodes[i], r = radius(n) + 4; if ((mx - n.x) * (mx - n.x) + (my - n.y) * (my - n.y) <= r * r) return n; } return null; }
+  function pos(ev) { var r = canvas.getBoundingClientRect(), p = ev.touches ? ev.touches[0] : ev; return { x: p.clientX - r.left, y: p.clientY - r.top }; }
+  canvas.addEventListener("mousemove", function (ev) { var p = pos(ev); hover = nodeAt(p.x, p.y); if (reduce) draw(); });
+  canvas.addEventListener("mouseleave", function () { hover = null; if (reduce) draw(); });
+  canvas.addEventListener("touchstart", function (ev) { var p = pos(ev); hover = nodeAt(p.x, p.y); if (reduce) draw(); }, { passive: true });
+
+  function frame() { var t = nowMs(), dt = Math.min(0.05, (t - last) / 1000); last = t; if (!reduce && !hover) { LAYERS.forEach(function (L, li) { rot[li] += L.speed * dt; }); } place(); draw(); requestAnimationFrame(frame); }
+  function init() { resize(); place(); if (reduce) { draw(); } else { last = nowMs(); requestAnimationFrame(frame); } }
+  var rt;
+  window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(function () { resize(); place(); draw(); }, 150); });
+  var mq = window.matchMedia("(prefers-color-scheme: dark)");
+  (mq.addEventListener ? mq.addEventListener.bind(mq, "change") : mq.addListener.bind(mq))(function () { draw(); });
+  if (document.readyState === "complete") init(); else window.addEventListener("load", init);
 })();
 </script>
 
