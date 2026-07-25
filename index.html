@@ -344,7 +344,8 @@
   .advisor-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.1rem; }
   @media (max-width: 640px) { .advisor-grid { grid-template-columns: 1fr; } }
   .advisor { display: flex; gap: 1rem; align-items: flex-start; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 1.3rem 1.4rem; box-shadow: var(--shadow); }
-  .advisor-mark { flex: none; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-weight: 700; font-size: .9rem; color: #fff; background: linear-gradient(140deg, var(--signal), var(--signal-ink)); letter-spacing: .02em; }
+  .advisor-mark { flex: none; width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-weight: 700; font-size: .9rem; color: #fff; background: linear-gradient(140deg, var(--signal), var(--signal-ink)); letter-spacing: .02em; }
+  .advisor-photo { flex: none; width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 1px solid var(--line); }
   .advisor-name { margin: 0; font-size: var(--step-1); font-weight: 650; color: var(--ink); }
   .advisor-role { margin: .1rem 0 .4rem; font-family: var(--font-mono); font-size: .8rem; color: var(--accent-ink); }
   .advisor-note { margin: 0; color: var(--ink-soft); font-size: var(--step-sm); }
@@ -536,7 +537,7 @@
 
   <section class="block wrap" id="advisors">
     <div class="sec-head">
-      <p class="eyebrow">Advisory board</p>
+      <p class="eyebrow">Advisory committee</p>
       <h2>Guided by the field</h2>
       <p class="sec-sub">External advisors from research and practice help steer the ecosystem's direction, adoption, and sustainability.</p>
     </div>
