@@ -349,6 +349,8 @@
   .advisor-name { margin: 0; font-size: var(--step-1); font-weight: 650; color: var(--ink); }
   .advisor-role { margin: .1rem 0 .4rem; font-family: var(--font-mono); font-size: .8rem; color: var(--accent-ink); }
   .advisor-note { margin: 0; color: var(--ink-soft); font-size: var(--step-sm); }
+  .gov-subhead { font-family: var(--font-mono); font-size: var(--step-cap); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 1.1rem; padding-bottom: .5rem; border-bottom: 1px solid var(--line); }
+  .advisor-grid + .gov-subhead { margin-top: 2.4rem; }
 
   /* ---- footer ---- */
   .site-foot { border-top: 1px solid var(--line); padding-block: 2.4rem 3rem; }
@@ -376,7 +378,6 @@
       <a href="#map">Constellation</a>
       <a href="#adoption">Adoption</a>
       <a href="#dynamic">Ecosystem</a>
-      <a href="#advisors">Advisors</a>
       <a href="#governance">Governance</a>
       <a class="ext" href="https://github.com/yzhao062/pyod">GitHub &#8599;</a>
     </nav>
@@ -535,39 +536,35 @@
     </div>
   </section>
 
-  <section class="block wrap" id="advisors">
-    <div class="sec-head">
-      <p class="eyebrow">Advisory committee</p>
-      <h2>Guided by the field</h2>
-      <p class="sec-sub">External advisors from research and practice help steer the ecosystem's direction, adoption, and sustainability.</p>
-    </div>
-    <div class="advisor-grid">
-      <article class="advisor">
-        <div class="advisor-mark" aria-hidden="true">CK</div>
-        <div>
-          <p class="advisor-name">Chris Kuo</p>
-          <p class="advisor-role">Columbia University &middot; "Dr. Dataman"</p>
-          <p class="advisor-note">Author of the <em>Handbook of Anomaly Detection</em> and a leading PyOD educator; the adoption and education voice.</p>
-        </div>
-      </article>
-      <article class="advisor">
-        <div class="advisor-mark" aria-hidden="true">GP</div>
-        <div>
-          <p class="advisor-name">Guansong Pang</p>
-          <p class="advisor-role">Singapore Management University</p>
-          <p class="advisor-note">A leading deep anomaly-detection researcher and author of the field's standard deep-AD survey.</p>
-        </div>
-      </article>
-    </div>
-  </section>
-
   <section class="gov" id="governance">
     <div class="block wrap">
       <div class="sec-head">
         <p class="eyebrow">Maintained and accountable</p>
-        <h2>Governance and security</h2>
-        <p class="sec-sub">An ecosystem this widely deployed needs governance a reviewer can inspect, not just a maintainer's goodwill.</p>
+        <h2>Governance</h2>
+        <p class="sec-sub">An ecosystem this widely deployed needs governance a reviewer can inspect: an external advisory committee, reviewed contribution, coordinated security, and predictable releases.</p>
       </div>
+
+      <p class="gov-subhead">Advisory committee</p>
+      <div class="advisor-grid">
+        <article class="advisor">
+          <div class="advisor-mark" aria-hidden="true">CK</div>
+          <div>
+            <p class="advisor-name">Chris Kuo</p>
+            <p class="advisor-role">Columbia University &middot; "Dr. Dataman"</p>
+            <p class="advisor-note">Author of the <em>Handbook of Anomaly Detection</em> and a leading PyOD educator; the adoption and education voice.</p>
+          </div>
+        </article>
+        <article class="advisor">
+          <div class="advisor-mark" aria-hidden="true">GP</div>
+          <div>
+            <p class="advisor-name">Guansong Pang</p>
+            <p class="advisor-role">Singapore Management University</p>
+            <p class="advisor-note">A leading deep anomaly-detection researcher and author of the field's standard deep-AD survey.</p>
+          </div>
+        </article>
+      </div>
+
+      <p class="gov-subhead">How it is run</p>
       <div class="gov-grid">
         <div class="gov-item">
           <h4>Reviewed contribution</h4>
