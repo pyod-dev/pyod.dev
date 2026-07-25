@@ -340,6 +340,15 @@
   .book-desc { margin: .25rem 0 .3rem; color: var(--ink-soft); max-width: 60ch; }
   .book-links { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: .3rem; }
 
+  /* ---- advisors ---- */
+  .advisor-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.1rem; }
+  @media (max-width: 640px) { .advisor-grid { grid-template-columns: 1fr; } }
+  .advisor { display: flex; gap: 1rem; align-items: flex-start; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 1.3rem 1.4rem; box-shadow: var(--shadow); }
+  .advisor-mark { flex: none; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-weight: 700; font-size: .9rem; color: #fff; background: linear-gradient(140deg, var(--signal), var(--signal-ink)); letter-spacing: .02em; }
+  .advisor-name { margin: 0; font-size: var(--step-1); font-weight: 650; color: var(--ink); }
+  .advisor-role { margin: .1rem 0 .4rem; font-family: var(--font-mono); font-size: .8rem; color: var(--accent-ink); }
+  .advisor-note { margin: 0; color: var(--ink-soft); font-size: var(--step-sm); }
+
   /* ---- footer ---- */
   .site-foot { border-top: 1px solid var(--line); padding-block: 2.4rem 3rem; }
   .foot-inner { display: flex; flex-wrap: wrap; gap: 1.4rem 2.4rem; justify-content: space-between; }
@@ -366,6 +375,7 @@
       <a href="#map">Constellation</a>
       <a href="#adoption">Adoption</a>
       <a href="#dynamic">Ecosystem</a>
+      <a href="#advisors">Advisors</a>
       <a href="#governance">Governance</a>
       <a class="ext" href="https://github.com/yzhao062/pyod">GitHub &#8599;</a>
     </nav>
@@ -521,6 +531,32 @@
           <a class="btn ghost" href="https://medium.com/dataman-in-ai/handbook-of-anomaly-detection-with-python-outlier-detection-1-introduction-c8f30f71961c">Free chapter series &#8599;</a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="block wrap" id="advisors">
+    <div class="sec-head">
+      <p class="eyebrow">Advisory board</p>
+      <h2>Guided by the field</h2>
+      <p class="sec-sub">External advisors from research and practice help steer the ecosystem's direction, adoption, and sustainability.</p>
+    </div>
+    <div class="advisor-grid">
+      <article class="advisor">
+        <div class="advisor-mark" aria-hidden="true">CK</div>
+        <div>
+          <p class="advisor-name">Chris Kuo</p>
+          <p class="advisor-role">Columbia University &middot; "Dr. Dataman"</p>
+          <p class="advisor-note">Author of the <em>Handbook of Anomaly Detection</em> and a leading PyOD educator; the adoption and education voice.</p>
+        </div>
+      </article>
+      <article class="advisor">
+        <div class="advisor-mark" aria-hidden="true">GP</div>
+        <div>
+          <p class="advisor-name">Guansong Pang</p>
+          <p class="advisor-role">Singapore Management University</p>
+          <p class="advisor-note">A leading deep anomaly-detection researcher and author of the field's standard deep-AD survey.</p>
+        </div>
+      </article>
     </div>
   </section>
 
